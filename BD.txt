@@ -1,0 +1,45 @@
+create database popchat;
+use popchat;
+
+create table [User](
+[ID] int IDENTITY NOT NULL PRIMARY KEY,
+[Name] varchar(255) NOT NULL,
+[Login] varchar(255) NOT NULL,
+[Email] varchar(255) NOT NULL,
+[Password] varchar(255) NOT NULL 
+)
+
+insert into [User] values ('Leo','admin','enykoruna1@gmail.com','4E2CE2032050AAB2E8EE207F179F019A');
+
+select * from [User] WHERE [Login] = 'admin'
+
+create table [UserSettings](
+[UserID] int NOT NULL PRIMARY KEY,
+[Interests] ntext,
+[CountyCity] varchar(366),
+[Age] int,
+[ProfileImage] ntext,
+[MessageCount] int,
+[LastTimeOnline] DateTime
+)	
+
+insert into [UserSettings] values(1,null,null,0,null,0,null);
+
+select * from [UserSettings] 
+
+create table [MessageSettings](
+[UserID] int NOT NULL PRIMARY KEY,
+[Color] varchar(120),
+)
+
+create table [GlobalMessages](
+[ID] int IDENTITY NOT NULL,
+[UserID] int NOT NULL,
+[Text] ntext NOT NULL,
+[Date] DateTime NOT NULL,
+)
+
+select * from [GlobalMessages]
+
+drop table [GlobalMessages];
+
